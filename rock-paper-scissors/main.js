@@ -1,4 +1,4 @@
-//grabing Elements
+//grabbing Elements
 
 let rock = document.getElementById('rock')
 let paper = document.getElementById('paper')
@@ -11,50 +11,103 @@ let winner = document.getElementById('winner')
 let value = ''
 let botValue = ''
 
+let isValue = false
+
 //addEventLisiners
 
 rock.addEventListener('click',() => {
     value='rock'
+    isValue = true
     chosed.innerText='You chosed rock'
 })
 
 paper.addEventListener('click',() => {
     value='paper'
+    isValue = true
     chosed.innerText='You chosed paper'
 })
 
 scissors.addEventListener('click',() => {
     value='scissors'
+    isValue = true
     chosed.innerText='You chosed scissors'
 })
 
 btn.addEventListener('click',() => {
-    let random = Math.floor(Math.random()*3) 
-    if(random==1) {
-        result.innerHTML='<img src="img/rock.jpg" alt="Rock" id="rock">'
-        botValue = 'rock'
-    } else if(random==2) {
-        result.innerHTML='<img src="img/paper.jpg" alt="paper">'
-        botValue = 'paper'
-    }else {
-        result.innerHTML='<img src="img/scissors.jpg" alt="scissors">'
-        botValue = 'scissors'
-    }
+    if(isValue) {
+        let random = Math.floor(Math.random()*3) 
+        if(random==1) {
+            result.innerHTML='<img src="img/rock.jpg" alt="Rock" id="rock">'
+            botValue = 'rock'
+        } else if(random==2) {
+            result.innerHTML='<img src="img/paper.jpg" alt="paper">'
+            botValue = 'paper'
+        }else {
+            result.innerHTML='<img src="img/scissors.jpg" alt="scissors">'
+            botValue = 'scissors'
+        }
 
-    if(value==botValue) {
-        winner.innerText='Draw'
-    } else if(value=='rock' && botValue=='paper'){
-        winner.innerText='Bot wins'
-    }else if(value=='paper' && botValue=='scissors') {
-        winner.innerText='Bot wins'
-    }else if(value=='scissors' && botValue=='rock') {
-        winner.innerText='Bot wins'
-    }else if(value=='rock' && botValue=='scissors'){
-        winner.innerText='Player wins'
-    }else if(value=='paper' && botValue=='rock') {
-        winner.innerText='Player wins'
-    }else if(value=='scissors' && botValue=='paper') {
-        winner.innerText='Player wins'
+        switch(value) {
+
+            default:
+                winner.innerText='Draw'
+                break
+
+            case 'rock':
+
+                switch (botValue) {
+
+                    case 'rock':
+                        winner.innerText='Draw'
+                        break
+
+                    case 'paper':
+                        winner.innerText='Bot wins'
+                        break
+
+                    case 'scissors':
+                        winner.innerText='Player wins'
+                        break
+                }
+                break
+
+            case 'paper':
+
+                switch (botValue) {
+                    case 'rock':
+                        winner.innerText='Player wins'
+                        break
+
+                    case 'paper':
+                        winner.innerText='Draw'
+                        break
+                        
+                    case 'scissors':
+                        winner.innerText='Bot wins'
+                        break
+                }
+                break
+
+            case 'scissors':
+
+                switch (botValue) {
+
+                    case 'rock':
+                        winner.innerText='Bot wins'
+                        break
+
+                    case 'paper':
+                        winner.innerText='Player wins'
+                        break
+                        
+                    case 'scissors':
+                        winner.innerText='Draw'
+                        break
+                }
+                break
+        }
+    }else {
+        winner.innerText='Choose your item'
     }
     
 })
