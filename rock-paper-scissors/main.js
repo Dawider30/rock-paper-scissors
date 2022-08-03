@@ -56,15 +56,12 @@ btn.addEventListener('click',() => {
             case 'rock':
 
                 switch (botValue) {
-
                     case 'rock':
                         winner.innerText='Draw'
                         break
-
                     case 'paper':
                         winner.innerText='Bot wins'
                         break
-
                     case 'scissors':
                         winner.innerText='Player wins'
                         break
@@ -72,16 +69,13 @@ btn.addEventListener('click',() => {
                 break
 
             case 'paper':
-
                 switch (botValue) {
                     case 'rock':
                         winner.innerText='Player wins'
                         break
-
                     case 'paper':
                         winner.innerText='Draw'
                         break
-                        
                     case 'scissors':
                         winner.innerText='Bot wins'
                         break
@@ -91,15 +85,12 @@ btn.addEventListener('click',() => {
             case 'scissors':
 
                 switch (botValue) {
-
                     case 'rock':
                         winner.innerText='Bot wins'
                         break
-
                     case 'paper':
                         winner.innerText='Player wins'
                         break
-                        
                     case 'scissors':
                         winner.innerText='Draw'
                         break
